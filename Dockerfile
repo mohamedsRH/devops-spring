@@ -1,4 +1,5 @@
-FROM openjdk:21
-
-COPY target/*.jar DevOps_Project-2.1.jar
-ENTRYPOINT ["java","-jar","/DevOps_Project-2.1.jar"]
+FROM adoptopenjdk:11-jre-hotspot
+EXPOSE 8086
+ARG JAR_FILE=target/DevOps_Project-2.1.jar
+COPY ${JAR_FILE} sallami/app.jar
+ENTRYPOINT ["java","-jar","sallami/app.jar"]
