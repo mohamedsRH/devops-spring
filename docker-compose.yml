@@ -9,7 +9,10 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_ROOT_PASSWORD: ""
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   sonarqube:
     container_name: sonarqube
@@ -62,9 +65,11 @@ services:
     ports:
       - 8086:8086
     depends_on:
+      - mysql
       - prometheus
 
 volumes:
+  mysql_data: {}
   prometheus_data: {}
   grafana_data: {}
   alertmanager_data: {}
