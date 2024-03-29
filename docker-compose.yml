@@ -56,6 +56,14 @@ services:
     depends_on:
       - prometheus
 
+  devops-project:
+    container_name: devops-project
+    image: mohamedsrh/devops-project:latest
+    ports:
+      - 8086:8086
+    depends_on:
+      - prometheus
+
 volumes:
   prometheus_data: {}
   grafana_data: {}
