@@ -14,18 +14,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-  sonarqube:
-    container_name: sonarqube
-    image: sonarqube:lts
-    ports:
-      - 9000:9000
-      - 9092:9092
-
-  nexus:
-    container_name: nexus
-    image: sonatype/nexus3
-    ports:
-      - 8081:8081
 
   prometheus:
     container_name: prometheus
