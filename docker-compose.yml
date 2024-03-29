@@ -20,6 +20,7 @@ services:
     ports:
       - 9090:9090
     volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -34,18 +35,6 @@ services:
     depends_on:
       - prometheus
 
-  alertmanager:
-    container_name: alertmanager
-    image: prom/alertmanager:latest
-    ports:
-      - 9093:9093
-    volumes:
-      - alertmanager_data:/alertmanager
-    command:
-      - '--config.file=/etc/alertmanager/alertmanager.yml'
-    depends_on:
-      - prometheus
-
   devops-project:
     container_name: devops-project
     image: mohamedsrh/devops-project:latest
@@ -54,6 +43,7 @@ services:
     depends_on:
       - mysql
       - prometheus
+
   mysql-exporter:
     container_name: mysql-exporter
     image: prom/mysqld-exporter:latest
@@ -69,4 +59,3 @@ volumes:
   mysql_data: {}
   prometheus_data: {}
   grafana_data: {}
-  alertmanager_data: {}
