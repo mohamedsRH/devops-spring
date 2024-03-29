@@ -22,6 +22,7 @@ services:
       - 9090:9090
     volumes:
       - prometheus_data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
 
@@ -61,7 +62,7 @@ services:
     ports:
       - 9104:9104
     environment:
-      DATA_SOURCE_NAME: "root:@(mysql:3306)/"
+      DATA_SOURCE_NAME: "root@(mysql:3306)/"
     depends_on:
       - mysql
       - prometheus
