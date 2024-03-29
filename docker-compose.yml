@@ -13,6 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./custom-my.cnf:/etc/mysql/my.cnf
 
   prometheus:
     container_name: prometheus
