@@ -59,7 +59,7 @@ services:
     container_name: angular-app
     image: mohamedsrh/angular-app:latest
     ports:
-      - 8081:80
+      - 8084:80
 volumes:
   mysql_data: {}
   prometheus_data: {}
